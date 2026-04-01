@@ -1,0 +1,22 @@
+{
+  "name": "claude-buddy",
+  "version": "1.0.0",
+  "description": "Encyclopedia & customizer for Claude Code's /buddy companion system",
+  "type": "module",
+  "bin": {
+    "claude-buddy": "./index.ts"
+  },
+  "scripts": {
+    "start": "bun run index.ts",
+    "test": "bun test"
+  },
+  "keywords": ["claude-code", "buddy", "companion", "pet", "terminal", "ascii-art", "customizer"],
+  "license": "MIT",
+  "engines": {
+    "bun": ">=1.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/anthropics/claude-buddy"
+  }
+}

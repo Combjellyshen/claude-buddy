@@ -1,0 +1,5 @@
+node_modules/
+*.buddy-backup
+*.buddy-tmp
+*.buddy-patched
+.DS_Store
