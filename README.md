@@ -29,6 +29,8 @@
 `/buddy` is a virtual pet companion built into [Claude Code](https://code.claude.com) — Anthropic's official coding CLI. Introduced on **April 1, 2026**, it hatches a unique ASCII art creature in your terminal that sits beside your input box, watches you code, and reacts with speech bubbles.
 
 Every buddy is **deterministically generated** from your Anthropic account UUID. Same account, same buddy — on every device, every time.
+<img width="131" height="207" alt="image" src="https://github.com/user-attachments/assets/a481c756-27c6-4120-911c-974c7d08a488" />
+
 
 > **This tool** lets you browse the full buddy encyclopedia and **forge any buddy you want** by patching the generation seed in the Claude Code binary.
 
