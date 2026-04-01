@@ -19,30 +19,54 @@ export interface PatchResult {
   occurrences?: number;
 }
 
-/** Find the Claude Code binary path */
+/** Find the Claude Code binary path (Linux + Windows + macOS) */
 export function findBinaryPath(): string | null {
-  const base = join(homedir(), ".local", "share", "claude", "versions");
-  if (!existsSync(base)) return null;
+  const home = homedir();
+  const isWin = process.platform === "win32";
 
-  // Find the latest version directory or binary
-  const candidates = [
-    // Direct version binary (Linux)
-    ...(() => {
-      try {
-        const entries = require("fs").readdirSync(base);
-        return entries
-          .filter((e: string) => /^\d+\.\d+\.\d+$/.test(e) && !e.endsWith(".bak"))
-          .sort()
-          .reverse()
-          .map((e: string) => join(base, e));
-      } catch { return []; }
-    })(),
-  ];
+  // Candidate paths in priority order
+  const candidates: string[] = [];
+
+  if (isWin) {
+    // Windows: claude.exe is the actual binary
+    candidates.push(join(home, ".local", "bin", "claude.exe"));
+    // Fallback: check AppData
+    if (process.env.LOCALAPPDATA) {
+      candidates.push(join(process.env.LOCALAPPDATA, "claude", "claude.exe"));
+    }
+  } else {
+    // macOS: same structure as Linux
+    candidates.push(join(home, ".local", "bin", "claude"));
+  }
+
+  // Linux/macOS: version-specific binaries
+  const versionsDir = join(home, ".local", "share", "claude", "versions");
+  if (existsSync(versionsDir)) {
+    try {
+      const entries = require("fs").readdirSync(versionsDir);
+      const versions = entries
+        .filter((e: string) => /^\d+\.\d+\.\d+$/.test(e) && !e.endsWith(".bak"))
+        .sort()
+        .reverse();
+      for (const v of versions) {
+        candidates.push(join(versionsDir, v));
+      }
+    } catch {}
+  }
+
+  // Return the first candidate that exists, is a file, and contains the salt
+  const saltBuf = Buffer.from(ORIGINAL_SALT);
+  const patchedPrefix = Buffer.from("friend-");
 
   for (const p of candidates) {
     try {
       const s = require("fs").statSync(p);
-      if (s.isFile() && s.size > 1_000_000) return p;
+      if (!s.isFile() || s.size < 1_000_000) continue;
+      // Quick check: does it contain any buddy salt string?
+      const data = require("fs").readFileSync(p);
+      if (data.includes(saltBuf) || data.includes(patchedPrefix)) {
+        return p;
+      }
     } catch { continue; }
   }
   return null;
