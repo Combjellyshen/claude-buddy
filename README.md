@@ -1,11 +1,9 @@
-<p align="center">
-  <pre align="center">
-    .--.
-   /° ° \      ★★★★★ LEGENDARY MUSHROOM
-  (______)     "Truffle"
-    |  |       WISDOM 100 · Hat: tophat
-  </pre>
-</p>
+```
+        .--.
+       /° ° \      ★★★★★ LEGENDARY MUSHROOM
+      (______)     "Truffle"
+        |  |       WISDOM 100 · Hat: tophat
+```
 
 <h1 align="center">claude-buddy</h1>
 

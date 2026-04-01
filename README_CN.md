@@ -1,11 +1,9 @@
-<p align="center">
-  <pre align="center">
-    .--.
-   /° ° \      ★★★★★ 传奇 蘑菇
-  (______)     "Truffle"
-    |  |       智慧 100 · 帽子: 礼帽
-  </pre>
-</p>
+```
+        .--.
+       /° ° \      ★★★★★ 传奇 蘑菇
+      (______)     "Truffle"
+        |  |       智慧 100 · 帽子: 礼帽
+```
 
 <h1 align="center">claude-buddy</h1>
 
