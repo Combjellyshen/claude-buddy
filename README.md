@@ -238,6 +238,22 @@ bun run index.ts restore
 
 Your accountUuid is the same everywhere. Run `forge` with the same `--species` and `--rarity` on each machine — it will find the same salt because the UUID is identical.
 
+**Bones sync automatically** — same UUID + same salt = same species, rarity, stats, eye, hat on every device.
+
+**Soul requires manual copy** — the name and personality are AI-generated per device on first `/buddy`. To keep them consistent:
+
+```bash
+# On the machine that already has the buddy you like:
+cat ~/.claude.json | grep -A3 companion
+# Copy the "companion" block
+
+# On the new machine, AFTER running forge but BEFORE running /buddy:
+# Paste the "companion" block into ~/.claude.json
+# This prevents /buddy from generating a new random name
+```
+
+> **Tip:** If you run `/buddy` before copying the soul, it will generate a new name. That's fine — the bones (species, rarity, stats) will still be correct.
+
 ## 🔬 How It Works
 
 ### The Generation Pipeline

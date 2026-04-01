@@ -222,6 +222,22 @@ bun run index.ts restore
 
 你的 accountUuid 在所有设备上相同。在每台机器上运行相同的 `forge` 命令（相同 `--species` 和 `--rarity`），会找到完全相同的盐值。
 
+**骨骼自动同步** — 同 UUID + 同盐值 = 同物种、稀有度、属性、眼睛、帽子，每台设备完全一致。
+
+**灵魂需要手动复制** — 名字和性格描述是每台设备首次 `/buddy` 时 AI 独立生成的。如需保持一致：
+
+```bash
+# 在已有心仪 buddy 的机器上查看：
+cat ~/.claude.json | grep -A3 companion
+# 复制 "companion" 字段
+
+# 在新机器上，运行 forge 之后、运行 /buddy 之前：
+# 将 "companion" 字段粘贴到 ~/.claude.json 中
+# 这样 /buddy 就不会重新生成名字
+```
+
+> **提示：** 如果在复制灵魂之前就运行了 `/buddy`，它会生成一个新名字。没关系 — 骨骼（物种、稀有度、属性）仍然是正确的。
+
 ## 🔬 工作原理
 
 ### 生成流水线
