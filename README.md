@@ -39,14 +39,6 @@ Every buddy is **deterministically generated** from your Anthropic account UUID.
 
 **Requires [Bun](https://bun.sh)** (ships with Claude Code).
 
-### Platform Support
-
-| Platform | Wiki (encyclopedia) | Forge (binary patch) | Status |
-|----------|:-------------------:|:--------------------:|--------|
-| **Linux** | ✅ | ✅ | Fully tested |
-| **Windows** | ✅ | ⚠️ Experimental | Wiki works. Forge patches `~/.local/bin/claude.exe` — binary location may vary; please [report issues](https://github.com/Combjellyshen/claude-buddy/issues) |
-| **macOS** | ✅ | ⚠️ Untested | Should work (same structure as Linux) |
-
 ```bash
 git clone https://github.com/Combjellyshen/claude-buddy.git
 cd claude-buddy

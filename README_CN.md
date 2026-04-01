@@ -38,14 +38,6 @@
 
 需要 **[Bun](https://bun.sh)** 运行时（Claude Code 自带）。
 
-### 平台支持
-
-| 平台 | Wiki（百科） | Forge（二进制补丁） | 状态 |
-|------|:----------:|:-----------------:|------|
-| **Linux** | ✅ | ✅ | 已完整测试 |
-| **Windows** | ✅ | ⚠️ 实验性 | Wiki 可用。Forge 补丁 `~/.local/bin/claude.exe`——不同机器二进制位置可能不同，欢迎[反馈问题](https://github.com/Combjellyshen/claude-buddy/issues) |
-| **macOS** | ✅ | ⚠️ 未测试 | 理论可用（与 Linux 结构相同） |
-
 ```bash
 git clone https://github.com/Combjellyshen/claude-buddy.git
 cd claude-buddy
