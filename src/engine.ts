@@ -157,26 +157,32 @@ export function rollBones(userId: string, salt: string): BuddyBones {
 // Brute-force search
 // ---------------------------------------------------------------------------
 
+/** Filter criteria for brute-force search */
+export interface ForgeFilter {
+  species: string;
+  rarity: string;
+  shiny?: boolean;
+}
+
 /**
- * Search for a salt suffix that produces the desired species + rarity for a
- * given userId.
- *
- * Tries suffixes in the pattern "friend-XXXXXXXX" (the suffix portion is
- * zero-padded to keep the full string at 15 characters) sequentially.
+ * Search for a salt suffix that produces the desired buddy properties.
  *
  * @returns The matching suffix string, or null if the budget is exhausted.
  */
 export function bruteForce(
   userId: string,
-  targetSpecies: string,
-  targetRarity: string,
+  filter: ForgeFilter,
   budget: number = 200_000_000,
   onProgress?: (checked: number) => void,
 ): string | null {
   for (let i = 0; i < budget; i++) {
     const suffix = "friend-" + String(i).padStart(8, "0");
     const bones = rollBones(userId, suffix);
-    if (bones.species === targetSpecies && bones.rarity === targetRarity) {
+    if (
+      bones.species === filter.species &&
+      bones.rarity === filter.rarity &&
+      (filter.shiny === undefined || bones.shiny === filter.shiny)
+    ) {
       return suffix;
     }
     if (onProgress && i % 100_000 === 0) onProgress(i);

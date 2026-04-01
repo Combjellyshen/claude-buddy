@@ -11,7 +11,7 @@
  */
 
 import { SPECIES, RARITY_TIERS, EYES, HATS, STATS, SALT, SPECIES_INFO, SPRITES } from "./src/data";
-import { rollBones, bruteForce, type BuddyBones } from "./src/engine";
+import { rollBones, bruteForce, type BuddyBones, type ForgeFilter } from "./src/engine";
 import {
   renderBuddyCard, renderSpeciesList, renderRarityTable,
   renderStatsInfo, renderHatsInfo, bold, dim, colorize,
@@ -253,6 +253,7 @@ async function handleForge(args: string[]) {
   // Parse arguments
   let targetSpecies: string | null = null;
   let targetRarity: string | null = null;
+  let wantShiny = false;
   let dryRun = false;
   let customUuid: string | null = null;
 
@@ -260,6 +261,7 @@ async function handleForge(args: string[]) {
     const a = args[i];
     if (a === "--species" || a === "-s") targetSpecies = args[++i]?.toLowerCase();
     else if (a === "--rarity" || a === "-r") targetRarity = args[++i]?.toLowerCase();
+    else if (a === "--shiny") wantShiny = true;
     else if (a === "--dry-run") dryRun = true;
     else if (a === "--uuid") customUuid = args[++i];
   }
@@ -289,16 +291,23 @@ async function handleForge(args: string[]) {
     return;
   }
 
+  const shinyLabel = wantShiny ? colorize(" ✨SHINY", C.yellow) : "";
   console.log(`\n  ${bold("Forging your buddy...")}`);
-  console.log(`  ${dim("Target:")} ${rarityLabel(targetRarity)} ${bold(targetSpecies.toUpperCase())}`);
+  console.log(`  ${dim("Target:")} ${rarityLabel(targetRarity)} ${bold(targetSpecies.toUpperCase())}${shinyLabel}`);
   console.log(`  ${dim("UUID:")}   ${userId}\n`);
+
+  const filter: ForgeFilter = {
+    species: targetSpecies,
+    rarity: targetRarity,
+    ...(wantShiny ? { shiny: true } : {}),
+  };
 
   // Brute-force search
   const start = Date.now();
   let lastReport = start;
   let checked = 0;
 
-  const newSalt = bruteForce(userId, targetSpecies, targetRarity, 200_000_000, (n) => {
+  const newSalt = bruteForce(userId, filter, 200_000_000, (n) => {
     checked = n;
     const now = Date.now();
     if (now - lastReport > 100) {
