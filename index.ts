@@ -354,6 +354,11 @@ async function handleForge(args: string[]) {
     if (result.backupPath) {
       console.log(`  ${dim(`Backup: ${result.backupPath}`)}`);
     }
+    // Clear old soul so /buddy generates a fresh name/personality for the new species
+    const cleared = await updateCompanionSoul("", "", true);
+    if (cleared) {
+      console.log(`  ${dim("Cleared old companion soul — /buddy will generate a new one.")}`);
+    }
   } else {
     console.error(`  ${C.red}${result.message}${C.reset}`);
   }

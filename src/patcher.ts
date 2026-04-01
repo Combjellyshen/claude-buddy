@@ -167,19 +167,24 @@ export async function patchBinary(
   }
 }
 
-/** Update companion soul (name/personality) in ~/.claude.json */
+/** Update or clear companion soul (name/personality) in ~/.claude.json */
 export async function updateCompanionSoul(
   name: string,
-  personality: string
+  personality: string,
+  clear: boolean = false,
 ): Promise<boolean> {
   const configPath = join(homedir(), ".claude.json");
   try {
     const config = JSON.parse(await Bun.file(configPath).text());
-    config.companion = {
-      name,
-      personality,
-      hatchedAt: Date.now(),
-    };
+    if (clear) {
+      delete config.companion;
+    } else {
+      config.companion = {
+        name,
+        personality,
+        hatchedAt: Date.now(),
+      };
+    }
     await writeFile(configPath, JSON.stringify(config, null, 2));
     return true;
   } catch {
