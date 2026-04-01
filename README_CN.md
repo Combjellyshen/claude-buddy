@@ -27,11 +27,10 @@
 ## 什么是 /buddy？
 
 `/buddy` 是 [Claude Code](https://code.claude.com)（Anthropic 官方编程 CLI）内置的虚拟宠物伴侣系统。**2026 年 4 月 1 日**上线，在终端中输入 `/buddy` 后，一只独特的 ASCII 小生物会在你的输入框旁边孵化，陪你写代码，偶尔在气泡框里发表评论。
-<img width="129" height="206" alt="image" src="https://github.com/user-attachments/assets/60a1404c-cedc-4adf-b829-669ba6dde0a4" />
-<img width="131" height="207" alt="image" src="https://github.com/user-attachments/assets/351d8c4f-e483-4b70-b4e1-cce14755b345" />
-
 
 每只宠物基于你的 **Anthropic 账户 UUID 确定性生成**。同一账户 = 同一宠物，任何设备、任何时间。
+<img width="129" height="206" alt="image" src="https://github.com/user-attachments/assets/60a1404c-cedc-4adf-b829-669ba6dde0a4" />
+<img width="131" height="207" alt="image" src="https://github.com/user-attachments/assets/351d8c4f-e483-4b70-b4e1-cce14755b345" />
 
 > **本工具**提供完整的宠物百科浏览，以及通过补丁生成种子来**锻造任意宠物**的能力。
 
