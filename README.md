@@ -1,6 +1,6 @@
 ```
-       ___
-      (   )
+         ___
+        (   )
         .--.
        /° ° \      ★★★★★ LEGENDARY MUSHROOM
       (______)     "Truffle"
