@@ -1,6 +1,6 @@
 {
   "name": "claude-buddy",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Encyclopedia & customizer for Claude Code's /buddy companion system",
   "type": "module",
   "bin": {
@@ -17,6 +17,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/anthropics/claude-buddy"
+    "url": "https://github.com/Combjellyshen/claude-buddy"
   }
 }
