@@ -219,8 +219,8 @@ bun run index.ts restore
 
 | Flag | Description |
 |------|-------------|
-| `--species`, `-s` | Target species (e.g., `dragon`, `mushroom`, `chonk`) |
-| `--rarity`, `-r` | Target rarity (`common`, `uncommon`, `rare`, `epic`, `legendary`) |
+| `--species`, `-s` | Target species — one of: `duck`, `goose`, `blob`, `cat`, `dragon`, `octopus`, `owl`, `penguin`, `turtle`, `snail`, `ghost`, `axolotl`, `capybara`, `cactus`, `robot`, `rabbit`, `mushroom`, `chonk` |
+| `--rarity`, `-r` | Target rarity — one of: `common` (60%), `uncommon` (25%), `rare` (10%), `epic` (4%), `legendary` (1%) |
 | `--dry-run` | Preview result without patching |
 | `--uuid <id>` | Override auto-detected UUID |
 

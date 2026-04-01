@@ -204,8 +204,8 @@ bun run index.ts restore
 
 | 参数 | 说明 |
 |------|------|
-| `--species`, `-s` | 目标物种（如 `dragon`、`mushroom`、`chonk`） |
-| `--rarity`, `-r` | 目标稀有度（`common`、`uncommon`、`rare`、`epic`、`legendary`） |
+| `--species`, `-s` | 目标物种 — 可选：`duck`(鸭) `goose`(鹅) `blob`(果冻) `cat`(猫) `dragon`(龙) `octopus`(章鱼) `owl`(猫头鹰) `penguin`(企鹅) `turtle`(乌龟) `snail`(蜗牛) `ghost`(幽灵) `axolotl`(六角恐龙) `capybara`(水豚) `cactus`(仙人掌) `robot`(机器人) `rabbit`(兔子) `mushroom`(蘑菇) `chonk`(胖橘) |
+| `--rarity`, `-r` | 目标稀有度 — 可选：`common`(普通 60%) `uncommon`(稀有 25%) `rare`(珍稀 10%) `epic`(史诗 4%) `legendary`(传奇 1%) |
 | `--dry-run` | 仅预览，不修改 |
 | `--uuid <id>` | 手动指定 UUID（默认自动检测） |
 
